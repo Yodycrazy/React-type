@@ -1,7 +1,5 @@
-import { Category } from "../interfaces/Categories.interface";
-import { Product } from "../interfaces/Products.interface";
 
-export default class ApiService {
+export default class ApiService <T> {
     private baseUrl: string;
 
     constructor(baseUrl: string) {
@@ -12,7 +10,8 @@ export default class ApiService {
     async get<T>(endpoint: string): Promise<T> {
         try {
             const response = await fetch(this.baseUrl + endpoint, {method: "GET"});
-            return await response.json();
+            const data: T = await response.json();
+            return data;
 
         } catch (error) {
             throw new Error();
@@ -20,14 +19,27 @@ export default class ApiService {
         }
     }
 
-    async post<T>(endpoint: string, data:Category|Product): Promise<T> {
+    async getAll<T>(endpoint: string): Promise<T[]> {
+        try {
+            const response = await fetch(this.baseUrl + endpoint, {method: "GET"});
+            const data: T[] = await response.json();
+            return data;
+
+        } catch (error) {
+            throw new Error();
+
+        }
+    }
+
+    async post<T>(endpoint: string, data: T): Promise<T> {
         try {
             const response = await fetch(this.baseUrl + endpoint, {
                 method: "POST", 
                 headers: { "content-Type": "application/json"},
                 body: JSON.stringify(data),
             });
-            return await response.json();
+            const dataPost: T = await response.json();
+            return dataPost;
 
         } catch (error) {
             throw new Error();
@@ -35,14 +47,15 @@ export default class ApiService {
         }
     }
 
-    async put<T>(endpoint: string, data:Category|Product): Promise<T> {
+    async put<T>(endpoint: string, data:T): Promise<T> {
         try {
             const response = await fetch(this.baseUrl + endpoint, {
                 method: "PUT", 
                 headers: { "content-Type": "application/json"},
                 body: JSON.stringify(data),
             });
-            return await response.json();
+            const dataPost: T = await response.json();
+            return dataPost;
 
         } catch (error) {
             throw new Error();
