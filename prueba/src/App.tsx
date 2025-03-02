@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
-import MultiActionAreaCard from './app/components/cards/MultiActionCard';
+import ProductList from './app/modules/products/ProductList';
 
 function App() {
   return (
     <div className="App">
-      <MultiActionAreaCard title='prueba'>
-    <>hola</>
-        </MultiActionAreaCard>
+      <ProductList />
+
+
     </div>
   );
 }

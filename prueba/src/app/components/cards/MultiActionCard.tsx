@@ -1,28 +1,34 @@
 import * as React from 'react';
 import Card from '@mui/material/Card';
-import CardMedia from '@mui/material/CardMedia';
 import CardActionArea from '@mui/material/CardActionArea';
 import CustomCardContent from './CardContent';
+import { Product } from '../../interfaces/Products.interface';
+import { Category } from '../../interfaces/Categories.interface';
+import CardImage from './CardImage';
 import CardButtons from './CardButton';
 
+
 interface CardProps {
-    title: string;
-    children:React.ReactNode;
+  item: Product | Category;
+  valueButton: string;
+  onAction: () => void;
 }
 
-export default function MultiActionAreaCard({title, children}:CardProps) {
+export default function MultiActionCard({ item, valueButton, onAction }: CardProps) {
+
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardActionArea>
-        <CardMedia
-          component="img"
-          height="140"
-          image="/static/images/cards/contemplative-reptile.jpg"
-          alt="green iguana"
-        />
-       <CustomCardContent item={}/>
+
+        {"images" in item ? (
+          <CardImage title={item.title} url={item.images[0]} />
+        ) : (
+          <CardImage title={item.name} url={item.image} />
+        )}
+
+        <CustomCardContent item={item} />
       </CardActionArea>
-      <CardButtons/>
+    <CardButtons value={valueButton} onAction={onAction} />
     </Card>
   );
 }

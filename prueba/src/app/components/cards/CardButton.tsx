@@ -1,24 +1,19 @@
 import CardActions from "@mui/material/CardActions";
 import Button from "@mui/material/Button";
-import { Product } from "../../interfaces/Products.interface";
-import { Category } from "../../interfaces/Categories.interface";
+
 
 interface CardButtonsProps {
-  item: Product | Category;
-  onAction: (item: Product | Category) => void;
+  value:string;
+  color?: "primary" | "secondary" | "success" | "error";
+  onAction: () => void;
 }
 
-const CardButtons: React.FC<CardButtonsProps> = ({ item, onAction }) => (
+const CardButtons: React.FC<CardButtonsProps> = ({ value, color = "primary", onAction }) => (
   <CardActions>
-    {"price" in item ? (
-      <Button size="small" color="secondary" onClick={() => onAction(item)}>
-        Add to Cart
+      <Button size="small" color={color} onClick={onAction}>
+        {value}
       </Button>
-    ) : (
-      <Button size="small" color="primary" onClick={() => onAction(item)}>
-        View Category
-      </Button>
-    )}
+    
   </CardActions>
 );
 

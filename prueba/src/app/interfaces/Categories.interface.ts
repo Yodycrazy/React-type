@@ -1,4 +1,4 @@
 export interface Category {
-    name: number;
-    images: string
+    name: string;
+    image: string
 }

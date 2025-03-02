@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { CategoryService } from "../services/CategoryService";
-import { Category } from "../interfaces/Category";
+import { Category } from "../interfaces/Categories.interface";
+import { categoryServices } from "../services/Categories.services";
+
 
 export const useCategories = () => {
   const [categories, setCategories] = useState<Category[]>([]);
@@ -10,7 +11,7 @@ export const useCategories = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const data = await CategoryService.getAll();
+        const data = await categoryServices.getCategories();
         setCategories(data);
       } catch (err) {
         setError("Failed to load categories");

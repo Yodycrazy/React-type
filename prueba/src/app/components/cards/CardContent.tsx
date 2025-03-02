@@ -20,9 +20,6 @@ const CustomCardContent: React.FC<CardContentProps> = ({ item }) => (
           ${item.price}
         </Typography>
 
-        <Typography variant="body2" sx={{ color: "text.secondary" }}>
-          {item.description}
-        </Typography>
       </>
     )}
   </CardContent>
