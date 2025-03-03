@@ -17,7 +17,7 @@ interface CardProps {
 export default function MultiActionCard({ item, valueButton, onAction }: CardProps) {
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 300 }}>
       <CardActionArea>
 
         {"images" in item ? (
@@ -28,7 +28,7 @@ export default function MultiActionCard({ item, valueButton, onAction }: CardPro
 
         <CustomCardContent item={item} />
       </CardActionArea>
-    <CardButtons value={valueButton} onAction={onAction} />
+    <CardButtons value={valueButton} onAction={onAction}  />
     </Card>
   );
 }

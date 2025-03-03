@@ -13,9 +13,9 @@ const handlerButton = () => {
 }
 
   return (
-    <Grid container spacing={2}>
+    <Grid container spacing={2} columns={16}>
       {products.map((product, index) => (
-      <Grid key={index}  size={{ xs:12, sm:6, md:4}}>
+      <Grid key={index}  size={{ xs:6, md:4}}>
      <MultiActionCard item={product} valueButton="ver producto" onAction={handlerButton}/>
     </Grid>
 

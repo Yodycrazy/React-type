@@ -8,7 +8,7 @@ interface CardImageProps {
 const CardImage: React.FC<CardImageProps> = ({title, url}) => (
     <CardMedia
     component="img"
-    height="200"
+    height="300"
     image={url}
     alt={title}
   />

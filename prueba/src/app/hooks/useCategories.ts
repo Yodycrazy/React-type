@@ -11,7 +11,7 @@ export const useCategories = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const data = await categoryServices.getCategories();
+        const data:Category[] = await categoryServices.getCategories();
         setCategories(data);
       } catch (err) {
         setError("Failed to load categories");
