@@ -10,10 +10,10 @@ function App() {
     <div className="App">
       <HeaderModule />
       <h1>Tienda Virtual</h1>
-      <h2>Nuestras categorias...</h2>
-      <CategoryList/>
       <h2>Escoge entre cientos de productos...</h2>
       <ProductList />
+      <h2>Nuestras categorias...</h2>
+      <CategoryList/>
     </div>
   );
 }

@@ -1,26 +1,13 @@
-import { useEffect, useState } from "react";
+import useAsync from "./useAsync";
 import { Product } from "../interfaces/Products.interface";
 import { productServices } from "../services/Products.services";
 
-export const useProducts = () => {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
+const useProducts = () => {
+  const { data: products, loading, error, execute: fetchProducts } = useAsync<Product[]>(
+    () => productServices.getProducts()
+  );
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const data:Product[] = await productServices.getProducts();
-        setProducts(data);
-      } catch (err) {
-        setError("Failed to load products");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProducts();
-  }, []);
-
-  return { products, loading, error };
+  return { products: products || [], loading, error, fetchProducts };
 };
+
+export default useProducts;

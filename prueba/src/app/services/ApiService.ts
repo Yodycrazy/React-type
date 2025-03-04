@@ -1,5 +1,5 @@
 
-export default class ApiService <T> {
+export default class ApiService {
     private baseUrl: string;
 
     constructor(baseUrl: string) {

@@ -1,7 +1,6 @@
 import React from "react";
 import Banner from "./Banner";
 import LoginLink from "./LoginLink";
-import SearchBar from "./SearchBar";
 import Grid from "@mui/material/Grid2"; 
 
 interface HeaderProps {
@@ -23,10 +22,6 @@ const Header: React.FC<HeaderProps> = ({ bannerImageUrl, bannerAltText, onLoginC
       <Grid>
           <LoginLink onLoginClick={onLoginClick} />
         </Grid>
-        <Grid>
-          <SearchBar onSearch={onSearch} />
-        </Grid>
-
       </Grid>
     </Grid>
   );

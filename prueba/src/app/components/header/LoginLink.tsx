@@ -7,7 +7,8 @@ interface LoginLinkProps {
 
 const LoginLink: React.FC<LoginLinkProps> = ({ onLoginClick }) => {
   return (
-    <Button style={{ display: "flex", alignItems: "center", gap: "8px" }} color="primary" onClick={onLoginClick}>
+    <Button style={{ display: "flex", alignItems: "center", gap: "8px" }} 
+    color="primary" onClick={onLoginClick}>
       Login
     </Button>
   );

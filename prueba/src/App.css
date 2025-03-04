@@ -1,9 +1,9 @@
 .App {
   text-align: center;
   background-color: mediumpurple;
-  max-width: 1200px;
+  max-width:max-content;
   margin: 0 auto;
-  padding: 20px;
+  padding: 10px;
 
 }
 
