@@ -1,7 +1,6 @@
 import MultiActionCard from "../../components/cards/MultiActionCard";
 import Grid from "@mui/material/Grid2";
-import useCategories from "../../hooks/useCategories";
-
+import { useCategories } from "../../hooks/useCategories";
 
 const CategoryList = () => {
   const { categories, loading, error } = useCategories();

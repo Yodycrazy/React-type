@@ -15,12 +15,13 @@ interface CardProps {
 }
 
 export default function MultiActionCard({ item, valueButton, onAction }: CardProps) {
+  const isProduct = "images" in item;
 
   return (
     <Card sx={{ maxWidth: 300 }}>
+      
       <CardActionArea>
-
-        {"images" in item ? (
+        {isProduct ? (
           <CardImage title={item.title} url={item.images[0]} />
         ) : (
           <CardImage title={item.name} url={item.image} />
@@ -28,7 +29,8 @@ export default function MultiActionCard({ item, valueButton, onAction }: CardPro
 
         <CustomCardContent item={item} />
       </CardActionArea>
-    <CardButtons value={valueButton} onAction={onAction}  />
+
+      <CardButtons value={valueButton} onAction={onAction} />
     </Card>
   );
 }
