@@ -10,7 +10,7 @@ export const productServices = {
   updateProduct: (id: number, data: Product) => api.put<Product>(`products/${id}`, data),
   deleteProduct: (id: number) => api.delete<void>(`products/${id}`),
 
-  // Nuevo método para combinar múltiples filtros
+  
   filterProducts: (filters: {
     title?: string;
     price?: number;
