@@ -11,15 +11,14 @@ import CardButtons from './CardButton';
 interface CardProps {
   item: Product | Category;
   valueButton: string;
-  onAction: () => void;
+  onAction?: () => void; 
 }
 
 export default function MultiActionCard({ item, valueButton, onAction }: CardProps) {
   const isProduct = "images" in item;
 
   return (
-    <Card sx={{ maxWidth: 300 }}>
-      
+    <Card sx={{ maxWidth: 300 }}> 
       <CardActionArea>
         {isProduct ? (
           <CardImage title={item.title} url={item.images[0]} />
@@ -30,7 +29,7 @@ export default function MultiActionCard({ item, valueButton, onAction }: CardPro
         <CustomCardContent item={item} />
       </CardActionArea>
 
-      <CardButtons value={valueButton} onAction={onAction} />
+      <CardButtons value={valueButton} itemId={item.id} onAction={onAction} />
     </Card>
   );
 }

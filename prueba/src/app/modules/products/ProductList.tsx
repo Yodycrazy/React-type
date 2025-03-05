@@ -1,4 +1,5 @@
 import React from "react";
+import { useParams } from "react-router-dom"; 
 import useProductFilters from "../../hooks/useProductFilters";
 import FiltersMenu from "../../components/filters/FiltersMenu";
 import LoadingErrorHandler from "../../components/shared/LoadingErrorHandler";
@@ -8,12 +9,17 @@ import ProductForm from "../../components/form/ProductForm";
 
 
 const ProductList = () => {
+  const { id: categoryId } = useParams<{ id: string }>(); 
   const { categories, loading: categoriesLoading, error: categoriesError } = useCategories();
   const { filteredProducts, loading, error, noResultsMessage, handleApplyFilters, handleResetFilters } = useProductFilters(categories);
 
   const handleProductAdded = () => {
     handleResetFilters(); 
   };
+
+  const productsToDisplay = categoryId
+    ? filteredProducts.filter(product => product.categoryId === Number(categoryId))
+    : filteredProducts;
 
   if (categoriesLoading) return <p>Loading categories...</p>;
   if (categoriesError) return <p>Error loading categories: {categoriesError}</p>;
@@ -28,7 +34,7 @@ const ProductList = () => {
         onReset={handleResetFilters}
       />
       <LoadingErrorHandler loading={loading} error={error} noResultsMessage={noResultsMessage} />
-      <ProductGrid products={filteredProducts} />
+      <ProductGrid products={productsToDisplay} />
     </>
   );
 };

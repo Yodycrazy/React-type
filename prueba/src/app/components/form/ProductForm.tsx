@@ -12,7 +12,7 @@ interface ProductFormProps {
 const ProductForm: React.FC<ProductFormProps> = ({ categories, onProductAdded }) => {
   const apiService = new ApiService('https://api.escuelajs.co/api/v1');
 
-  // Estado para manejar los datos del formulario
+  
   const [product, setProduct] = useState<Product>({
     title: '',
     price: 0,
@@ -36,10 +36,22 @@ const ProductForm: React.FC<ProductFormProps> = ({ categories, onProductAdded })
       await apiService.post<Product>('/products/', product);
       alert('Producto añadido correctamente');
       onProductAdded();
+      handleReset(); 
     } catch (error) {
       console.error('Error al añadir el producto:', error);
       alert('Hubo un error al añadir el producto');
     }
+  };
+
+  
+  const handleReset = () => {
+    setProduct({
+      title: '',
+      price: 0,
+      description: '',
+      categoryId: 0,
+      images: [],
+    });
   };
 
   return (
@@ -90,7 +102,7 @@ const ProductForm: React.FC<ProductFormProps> = ({ categories, onProductAdded })
         </select>
       </div>
       <div>
-        <label>Imágenes (separadas por comas):</label>
+        <label>Url imagen:</label>
         <input
           type="text"
           name="images"
