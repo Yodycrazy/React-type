@@ -2,6 +2,7 @@ import React from "react";
 import Banner from "./Banner";
 import LoginLink from "./LoginLink";
 import Grid from "@mui/material/Grid2"; 
+import Navbar from "./Navbar";
 
 interface HeaderProps {
   bannerImageUrl: string;
@@ -14,7 +15,9 @@ const Header: React.FC<HeaderProps> = ({ bannerImageUrl, bannerAltText, onLoginC
   return (
     <Grid container direction="column" spacing={2}>
 
-      <Grid size={{ xs: 12}}>
+      <Navbar/>
+
+      {/* <Grid size={{ xs: 12}}>
         <Banner imageUrl={bannerImageUrl} altText={bannerAltText}  />
       </Grid>
 
@@ -22,7 +25,7 @@ const Header: React.FC<HeaderProps> = ({ bannerImageUrl, bannerAltText, onLoginC
       <Grid>
           <LoginLink onLoginClick={onLoginClick} />
         </Grid>
-      </Grid>
+      </Grid> */}
     </Grid>
   );
 };

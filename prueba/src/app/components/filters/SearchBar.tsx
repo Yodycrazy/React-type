@@ -25,7 +25,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ categories, onSearch, onReset }) 
   };
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+    <div style={{ display: "flex",justifyContent:"center", flexDirection: "column", gap: "12px", alignContent: "center"}}>
       <TitleSearch
         title={filters.title || ""}
         onTitleChange={(title) => updateFilters({ title })}

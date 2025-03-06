@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Product } from '../../interfaces/Products.interface';
 import apiServiceInstance from '../../services/ApiServiceInstance';
+import { Box, Typography } from '@mui/material';
 
 const ProductDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -29,17 +30,17 @@ const ProductDetail: React.FC = () => {
   if (!product) return <p>Producto no encontrado</p>;
 
   return (
-    <div>
-      <h1>{product.title}</h1>
+    <Box>
+      <Typography  variant="h3" component="h2" sx={{ pt: 2, color: "white" }}>{product.title}</Typography>
       <p>{product.description}</p>
       <p>Precio: ${product.price}</p>
       <div>
-        <h2>Imágenes:</h2>
+        <Typography  variant="h4" component="h3" sx={{ pt: 2, color: "white" }}>Imágenes:</Typography>
         {product.images.map((image, index) => (
           <img key={index} src={image} alt={`Imagen ${index + 1}`} style={{ width: '200px', margin: '10px' }} />
         ))}
       </div>
-    </div>
+    </Box>
   );
 };
 

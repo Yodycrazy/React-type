@@ -13,6 +13,7 @@ const CategorySelector: React.FC<CategorySelectorProps> = ({
   onCategoryChange,
 }) => {
   return (
+    <div style={{ display: "flex", gap: "8px", flexWrap: "wrap", justifyContent: "center", marginBottom:"8ppx"}}>
     <select
       value={selectedCategoryId || ""}
       onChange={(e) => onCategoryChange(Number(e.target.value))}
@@ -24,6 +25,7 @@ const CategorySelector: React.FC<CategorySelectorProps> = ({
         </option>
       ))}
     </select>
+    </div>
   );
 };
 

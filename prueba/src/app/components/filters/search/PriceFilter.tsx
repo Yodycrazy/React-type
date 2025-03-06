@@ -19,13 +19,14 @@ const PriceFilter: React.FC<PriceFilterProps> = ({
   onMaxPriceChange,
 }) => {
   return (
-    <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
+    <div style={{ display: "flex", gap: "8px", flexWrap: "wrap", justifyContent: "center" }}>
       <TextField
         size="small"
         type="number"
         placeholder="Precio exacto"
         value={price || ""}
         onChange={(e) => onPriceChange(Number(e.target.value))}
+        sx={{ backgroundColor: "white", borderRadius: 2 }}
       />
       <TextField
         size="small"
@@ -33,6 +34,7 @@ const PriceFilter: React.FC<PriceFilterProps> = ({
         placeholder="Precio mínimo"
         value={minPrice || ""}
         onChange={(e) => onMinPriceChange(Number(e.target.value))}
+        sx={{ backgroundColor: "white", borderRadius: 2 }}
       />
       <TextField
         size="small"
@@ -40,6 +42,7 @@ const PriceFilter: React.FC<PriceFilterProps> = ({
         placeholder="Precio máximo"
         value={maxPrice || ""}
         onChange={(e) => onMaxPriceChange(Number(e.target.value))}
+        sx={{ backgroundColor: "white", borderRadius: 2 }}
       />
     </div>
   );

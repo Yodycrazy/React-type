@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { Product } from '../../interfaces/Products.interface';
 import apiServiceInstance from '../../services/ApiServiceInstance';
 import ProductGrid from '../products/ProductGrid'; 
+import { Box, Typography } from '@mui/material';
 
 const CategoryProducts: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -30,10 +31,10 @@ const CategoryProducts: React.FC = () => {
   if (products.length === 0) return <p>No hay productos en esta categoría.</p>;
 
   return (
-    <div>
-      <h1>Productos de la Categoría</h1>
+    <Box  sx={{ p: 4 }}>
+      <Typography variant="h3" component="h2" sx={{ pb: 2, color: "white" }}>Productos de la Categoría</Typography>
       <ProductGrid products={products} /> 
-    </div>
+    </Box>
   );
 };
 
