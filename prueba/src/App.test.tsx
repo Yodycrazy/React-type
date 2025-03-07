@@ -1,19 +1,28 @@
-import React from "react";
-import { render, screen } from "@testing-library/react";
-import App from "./App";
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
+import App from './App';
 
-// Mock de react-router-dom
-jest.mock("react-router-dom");
-
-// Mock de @mui/material
-jest.mock("@mui/material", () => ({
-  Typography: ({ children }: { children: React.ReactNode }) => (
-    <div>{children}</div>
-  ),
-}));
-
-test("renders Tienda Virtual text", () => {
+test('renders main title "Tienda Virtual"', () => {
   render(<App />);
   const linkElement = screen.getByText(/Tienda Virtual/i);
   expect(linkElement).toBeInTheDocument();
+});
+
+test('renders the header component', () => {
+  render(<App />);
+  const headerElement = screen.getByRole('banner'); // Suponiendo que HeaderModule usa <header>
+  expect(headerElement).toBeInTheDocument();
+});
+
+test('renders the ProductList component', () => {
+  render(<App />);
+  const productListElement = screen.getByText(/Productos/i); 
+  expect(productListElement).toBeInTheDocument();
+});
+
+test('renders navigation links', () => {
+  render(<App />);
+  expect(screen.getByText(/Categorias/i)).toBeInTheDocument();
+  expect(screen.getByText(/Productos/i)).toBeInTheDocument();
 });
