@@ -2,14 +2,29 @@ import { useState } from "react";
 import { Product } from "../interfaces/Products.interface";
 import { productServices } from "../services/Products.services";
 import { Filters } from "../interfaces/Filters.interface";
-import { Category } from "../interfaces/Categories.interface"; 
+import { Category } from "../interfaces/Categories.interface";
 
+/**
+ * Hook personalizado para manejar el filtrado de productos.
+ * @param {Category[]} categories - Lista de categorías disponibles.
+ * @returns {Object} Estado y funciones del hook.
+ * @returns {Product[]} filteredProducts - Lista de productos filtrados.
+ * @returns {boolean} loading - Indica si la búsqueda está en proceso.
+ * @returns {string | null} error - Mensaje de error en caso de fallo.
+ * @returns {string | null} noResultsMessage - Mensaje cuando no hay resultados.
+ * @returns {(filters: Filters) => Promise<void>} handleApplyFilters - Función para aplicar filtros.
+ * @returns {() => Promise<void>} handleResetFilters - Función para restablecer los filtros.
+ */
 const useProductFilters = (categories: Category[]) => { 
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [noResultsMessage, setNoResultsMessage] = useState<string | null>(null);
 
+  /**
+   * Aplica los filtros de productos según los criterios especificados.
+   * @param {Filters} filters - Filtros a aplicar.
+   */
   const handleApplyFilters = async (filters: Filters) => {
     setLoading(true);
     setError(null);
@@ -48,6 +63,9 @@ const useProductFilters = (categories: Category[]) => {
     }
   };
 
+  /**
+   * Restablece los filtros y obtiene todos los productos.
+   */
   const handleResetFilters = async () => {
     setLoading(true);
     setError(null);

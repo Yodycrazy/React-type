@@ -8,18 +8,31 @@ import { useCategories } from "../../hooks/useCategories";
 import { useProducts } from "../../hooks/useProducts";
 import { Typography } from "@mui/material";
 
+/**
+ * Componente que muestra la lista de productos.
+ * Permite filtrar productos por categoría, título y rango de precios.
+ * 
+ * @component
+ * @returns {JSX.Element} Página con la lista de productos y filtros.
+ */
 const ProductList = () => {
   const { id: categoryId } = useParams<{ id: string }>(); 
+
+  // Obtiene las categorías y productos mediante hooks personalizados
   const { categories, loading: categoriesLoading, error: categoriesError } = useCategories();
   const { products, loading: productsLoading, error: productsError } = useProducts();
   const { filteredProducts, loading, error, noResultsMessage, handleApplyFilters, handleResetFilters } = useProductFilters(categories);
 
+  /**
+   * Resetea los filtros al cargar los productos.
+   */
   React.useEffect(() => {
     if (products.length > 0) {
       handleResetFilters();
     }
   }, products);
 
+  // Filtra los productos según la categoría seleccionada
   const productsToDisplay = categoryId
     ? filteredProducts.filter(product => product.categoryId === Number(categoryId))
     : filteredProducts;
@@ -28,6 +41,7 @@ const ProductList = () => {
   console.log("filteredProducts:", filteredProducts);
   console.log("productsToDisplay:", productsToDisplay);
 
+  // Manejo de estados de carga y errores
   if (categoriesLoading || productsLoading) return <p>Loading...</p>;
   if (categoriesError) return <p>Error loading categories: {categoriesError}</p>;
   if (productsError) return <p>Error loading products: {productsError}</p>;
