@@ -1,4 +1,4 @@
 [build]
   base    = "/src"
   publish = "/build"
-  command = "serve -s build"
+  command = "npm run build"
